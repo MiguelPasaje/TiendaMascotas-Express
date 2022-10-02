@@ -17,6 +17,33 @@ const getAnimals = async (req, res) => {
 
 }
 
+const getAnimal = async (req, res) => {
+
+    try {
+        const { id } = req.params
+        const animal = await Animal.findOne({
+            where: {
+                id
+            }
+        })
+
+        if (!animal) {
+            return res.status(404).json({ mensaje: 'No Existe ' });
+        }
+
+        res.status(200).json(animal);
+        // res.send('getAnimals de Animales')
+
+
+    } catch (error) {
+        res.status(400).json({ mensaje: `${error}` })
+    }
+
+}
+
+
+
+
 const postAnimal = async (req, res) => {
 
     try {
@@ -79,6 +106,7 @@ const deleteAnimal = async (req, res) => {
 
 export {
     getAnimals,
+    getAnimal,
     postAnimal,
     putAnimal,
     deleteAnimal

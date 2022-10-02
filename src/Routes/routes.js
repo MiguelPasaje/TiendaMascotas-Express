@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import { getMascotas, postMascotas, putMascotas, deleteMascotas } from '../controllers/ControllerMascota.js';
-import { getAnimals, postAnimal, putAnimal, deleteAnimal } from '../controllers/ControllerTipoAnimal.js';
+import { getAnimals, getAnimal, postAnimal, putAnimal, deleteAnimal } from '../controllers/ControllerTipoAnimal.js';
 
 
 
@@ -19,7 +19,7 @@ router.delete('/mascotas/:id', deleteMascotas);
 
 
 router.get('/Animals', getAnimals);
-router.get('/Animal/:id', getAnimals);
+router.get('/Animal/:id', getAnimal);
 router.post('/Animal', postAnimal);
 router.put('/Animal/:id', putAnimal);
 router.delete('/Animal/:id', deleteAnimal);
