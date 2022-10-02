@@ -4,10 +4,12 @@ import router from './src/Routes/routes.js';
 import { sequelize } from './src/Database/Database.js';
 import cors from 'cors'
 import './src/Models/Mascota.js'
+import './src/Models/tipoAnimal.js'
+
 
 const testDb = async () => {
   try {
-    await sequelize.sync();
+    await sequelize.sync({ force: false });
     await sequelize.authenticate();
     console.log('Connection has been established successfully.');
     app.use(cors())
