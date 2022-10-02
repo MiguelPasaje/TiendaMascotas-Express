@@ -16,11 +16,13 @@ const getMascotas = async (req, res) => {
 
 const postMascotas = async (req, res) => {
   try {
-    const { id, nombre } = req.body;
+    const { nombre, descripcion, estado_adopcion, idTipoAnimal } = req.body;
 
     const newMascota = await Mascota.create({
-      id,
-      nombre
+      nombre,
+      descripcion,
+      estado_adopcion,
+      idTipoAnimal
     });
 
     res.status(200).json(newMascota);
