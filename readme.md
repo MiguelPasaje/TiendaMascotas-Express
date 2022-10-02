@@ -12,3 +12,5 @@
  - - *"npm init -y "en la carpeta del proyecto*
  - - *npm i sequelize*
  - - *npm start*
+
+### proyecto realizado por: *Miguel Andres Pasaje*
