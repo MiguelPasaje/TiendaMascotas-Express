@@ -36,9 +36,13 @@ const putMascotas = async (req, res) => {
   try {
 
     const { id } = req.params;
-    const { nombre } = req.body;
+    const { nombre, descripcion, estado_adopcion, idTipoAnimal } = req.body;
     const oldMascota = await Mascota.findByPk(id);
     oldMascota.nombre = nombre;
+    oldMascota.descripcion = descripcion;
+    oldMascota.estado_adopcion = estado_adopcion;
+    oldMascota.idTipoAnimal = idTipoAnimal;
+
     const modMascota = await oldMascota.save();
 
     res.status(200).json(modMascota);
