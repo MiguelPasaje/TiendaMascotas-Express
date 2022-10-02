@@ -38,7 +38,20 @@ const postAnimal = async (req, res) => {
 }
 
 const putAnimal = async (req, res) => {
-    res.send('putAnimal de Animales')
+
+    try {
+        const { id } = req.params;
+        const { tipo_animal, descripcion } = req.body;
+        const oldAnimal = await Animal.findByPk(id);
+        oldAnimal.tipo_animal = tipo_animal;
+        oldAnimal.descripcion = descripcion;
+        const modMascota = await oldAnimal.save()
+        res.status(200).json(modMascota)
+
+    } catch (error) {
+        res.status(400).json({ mensaje: `${error}` })
+
+    }
 
 }
 
