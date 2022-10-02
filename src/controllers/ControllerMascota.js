@@ -14,6 +14,33 @@ const getMascotas = async (req, res) => {
 
 }
 
+const getMascota = async (req, res) => {
+  try {
+
+    const { id } = req.params
+
+    const mascota = await Mascota.findOne({
+      where: {
+        id
+      }
+    })
+
+    if (!mascota) {
+      return res.status(404).json({ mensaje: 'Mascota No Existe ' });
+    }
+
+    res.status(200).json(mascota);
+    // 
+
+
+  } catch (error) {
+    res.status(400).json({ mensaje: `${error}` });
+  }
+
+}
+
+
+
 const postMascotas = async (req, res) => {
   try {
     const { nombre, descripcion, estado_adopcion, idTipoAnimal } = req.body;
@@ -79,6 +106,7 @@ const deleteMascotas = async (req, res) => {
 
 export {
   getMascotas,
+  getMascota,
   postMascotas,
   putMascotas,
   deleteMascotas
