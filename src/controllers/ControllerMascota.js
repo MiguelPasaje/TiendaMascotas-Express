@@ -65,7 +65,8 @@ const deleteMascotas = async (req, res) => {
 
     res.status(200).json({
       body: {
-        id
+        id,
+        status: "success"
       }
     });
 
