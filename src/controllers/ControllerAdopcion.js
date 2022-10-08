@@ -17,7 +17,24 @@ const getAdopciones = async (req, res) => {
 }
 
 const getAdopcion = async (req, res) => {
-    res.send('getAdopcion de get')
+    //res.send('getAdopcion de get')
+    try {
+        const { id } = req.params
+        const oneSolicitud = await Adopcion.findOne({
+            where: {
+                id
+            }
+        })
+        if (!oneSolicitud) {
+            return res.status(404).json({ mensaje: 'No Existe solicitud de Adopcion' });
+        }
+
+        res.status(200).json(oneSolicitud);
+
+    } catch (error) {
+        res.status(400).json({ mensaje: `${error}` })
+    }
+
 
 
 }
