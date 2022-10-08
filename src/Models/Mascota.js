@@ -1,5 +1,6 @@
 import { DataTypes } from 'sequelize';
 import { sequelize } from '../Database/Database.js';
+import { Adopcion } from './Adopcion.js';
 
 const Mascota = sequelize.define('mascotas', {
   id: {
@@ -13,15 +14,20 @@ const Mascota = sequelize.define('mascotas', {
   descripcion: {
     type: DataTypes.STRING
   },
-  /*   id_tipo_animal: {
-      type: DataTypes.INTEGER,
-      forenkey: true
-    }, */
   estado_adopcion: {
     type: DataTypes.BOOLEAN,
     defaultValue: false
   },
 });
+
+Mascota.hasMany(Adopcion, {
+  foreignKey: 'idMascota',
+  sourceKey: 'id'
+})
+Adopcion.belongsTo(Mascota, {
+  foreignKey: 'idMascota',
+  targetId: 'id'
+})
 
 export {
   Mascota
