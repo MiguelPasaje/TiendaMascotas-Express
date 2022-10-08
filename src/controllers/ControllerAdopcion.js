@@ -77,7 +77,24 @@ const putAdopcion = async (req, res) => {
 }
 
 const deleteAdopcion = async (req, res) => {
-    res.send('getAdopcion de delete')
+    try {
+        const { id } = req.params;
+        const respueta = await Adopcion.destroy({
+            where: {
+                id
+            }
+        })
+        res.status(200).json({
+            body: {
+                id,
+                mensaje: "success"
+            }
+        });
+
+    } catch (error) {
+        res.status(500).json({ mensaje: `${error}` });
+
+    }
 }
 
 
