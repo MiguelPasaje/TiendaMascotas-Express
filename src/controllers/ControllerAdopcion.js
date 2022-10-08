@@ -8,11 +8,23 @@ const getAdopciones = async (req, res) => {
 const getAdopcion = async (req, res) => {
     res.send('getAdopcion de get')
 
+
 }
 
 const postAdopcion = async (req, res) => {
-    res.send('getAdopcion de post')
+    //res.send('getAdopcion de post')
+    try {
+        const { nombre, correo, telefono } = req.body
+        const { idMascota } = req.params
+        //res.send({ nombre, correo, telefono, idMascota })
+        const newSolicitudAdopcion = await Adopcion.create({
+            nombre, correo, telefono, idMascota
+        })
+        console.log(newSolicitudAdopcion)
+    } catch (error) {
+        res.status(500).json({ mensaje: error })
 
+    }
 
 }
 

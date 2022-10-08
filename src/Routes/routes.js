@@ -28,7 +28,7 @@ router.delete('/Animal/:id', deleteAnimal);
 
 router.get('/Adopciones', getAdopciones);
 router.get('/Adopcion/:id', getAdopcion);
-router.post('/Adopcion', postAdopcion);
+router.post('/Adopcion/:idMascota', postAdopcion);
 router.put('/Adopcion/:id', putAdopcion);
 router.delete('/Adopcion/:id', deleteAdopcion);
 
