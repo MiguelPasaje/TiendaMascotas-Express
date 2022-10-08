@@ -57,7 +57,22 @@ const postAdopcion = async (req, res) => {
 }
 
 const putAdopcion = async (req, res) => {
-    res.send('getAdopcion de put')
+    try {
+        const { id } = req.params;
+        const { nombre, correo, telefono } = req.body;
+
+        const oldSolicitud = await Adopcion.findByPk(id);
+        oldSolicitud.nombre = nombre;
+        oldSolicitud.correo = correo;
+        oldSolicitud.telefono = telefono;
+
+        const ModSololicAdop = await oldSolicitud.save()
+        res.status(200).json(ModSololicAdop)
+
+    } catch (error) {
+        res.status(400).json({ mensaje: `${error}` })
+
+    }
 
 }
 
