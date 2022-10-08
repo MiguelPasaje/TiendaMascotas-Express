@@ -49,6 +49,7 @@ const postAdopcion = async (req, res) => {
             nombre, correo, telefono, idMascota
         })
         console.log(newSolicitudAdopcion)
+        res.status(200).json({ mensaje: 'success' })
     } catch (error) {
         res.status(500).json({ mensaje: error })
 
