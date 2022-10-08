@@ -1,7 +1,18 @@
 import { Adopcion } from '../Models/Adopcion.js';
 
 const getAdopciones = async (req, res) => {
-    res.send('getAdopcion de gets')
+    //res.send('getAdopcion de gets')
+    try {
+        const solicutudes = await Adopcion.findAll({
+            order: [
+                ['id', 'ASC']
+            ]
+        })
+        res.status(200).json(solicutudes);
+
+    } catch (error) {
+        res.status(400).json({ mensaje: `${error}` })
+    }
 
 }
 
