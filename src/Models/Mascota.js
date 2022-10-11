@@ -14,6 +14,9 @@ const Mascota = sequelize.define('mascotas', {
   descripcion: {
     type: DataTypes.STRING
   },
+  imagen: {
+    type: DataTypes.STRING
+  },
   estado_adopcion: {
     type: DataTypes.BOOLEAN,
     defaultValue: false

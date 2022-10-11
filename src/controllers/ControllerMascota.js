@@ -43,11 +43,12 @@ const getMascota = async (req, res) => {
 
 const postMascotas = async (req, res) => {
   try {
-    const { nombre, descripcion, estado_adopcion, idTipoAnimal } = req.body;
+    const { nombre, descripcion, imagen, estado_adopcion, idTipoAnimal } = req.body;
 
     const newMascota = await Mascota.create({
       nombre,
       descripcion,
+      imagen,
       estado_adopcion,
       idTipoAnimal
     });
@@ -63,10 +64,11 @@ const putMascotas = async (req, res) => {
   try {
 
     const { id } = req.params;
-    const { nombre, descripcion, estado_adopcion, idTipoAnimal } = req.body;
+    const { nombre, descripcion, imagen, estado_adopcion, idTipoAnimal } = req.body;
     const oldMascota = await Mascota.findByPk(id);
     oldMascota.nombre = nombre;
     oldMascota.descripcion = descripcion;
+    oldMascota.imagen = imagen
     oldMascota.estado_adopcion = estado_adopcion;
     oldMascota.idTipoAnimal = idTipoAnimal;
 
